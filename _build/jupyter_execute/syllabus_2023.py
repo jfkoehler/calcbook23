@@ -21,7 +21,7 @@
 # - Use functions to model real world data
 # - Approximate definite integrals using summations
 # - Use the definite integral to solve problems around area under a curve and between curves
-# - Use summations and the definite integrals to explore problems from statistics, probability, and economics
+# - Use summations and the definite integrals to explore problems from statistics, probability, physics, and economics
 # - Use finite differences to explore rate of change of discrete data
 # - Use derivatives to understand change in continuous data
 # - Use approximate methods to maximize or minimize functions
@@ -30,6 +30,7 @@
 # - Solve constrained optimization problems using Lagrangian method
 # - Approximate solutions to differential equations 
 # - Solve differential equations using separation of variables
+# - Approximate solutions to differential equations using Euler's method
 
 # ### Schedule
 # 
