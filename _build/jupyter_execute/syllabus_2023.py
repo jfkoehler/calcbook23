@@ -8,7 +8,8 @@
 # - Course CRN: 8536
 # - Instructor Name: Jacob F. Koehler
 # - email: koehlerj@newschool.edu
-# - Monday and Wednesday: 10:00 - 11:40 am Room 411 UC
+# - Monday and Wednesday: 10:00 - 11:40 am Room 502 Johnson/Kaplan 66 West 12th
+# 
 # 
 # 
 

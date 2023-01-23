@@ -25,9 +25,7 @@
 # - Determine an expression for the number of total dots
 # - Use your expression to determine how many white, black and total dots there would be in the 20th term of the sequence
 # 
-# <center>
-#     <img src = images/sequences_1.png />
-# </center>
+# ![](images/sequences_1.png)
 
 # #### Problems
 # 
