@@ -4,9 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Functions &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions &#8212; Calculus I</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -35,13 +34,10 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -93,7 +89,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Calculus I</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -174,7 +170,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/functions.ipynb"
+        <a href="https://mybinder.org/v2/gh/jfkoehler/calcbook23/master?urlpath=tree/docs/functions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -187,6 +183,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jfkoehler/calcbook23/blob/master/docs/functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -217,7 +231,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/jfkoehler/calcbook23"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -234,7 +248,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffunctions.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/jfkoehler/calcbook23/issues/new?title=Issue%20on%20page%20%2Ffunctions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -432,19 +446,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+  <div class="tex2jax_ignore mathjax_ignore section" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <center>
     <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Function_machine2.svg/440px-Function_machine2.svg.png" width = 40%/>
 </center><p><strong>Definition</strong></p>
 <p><em>In mathematics, a function is a binary relation between two sets that associates every element of the first set to exactly one element of the second set. Typical examples are functions from integers to integers, or from the real numbers to real numbers.</em></p>
-<section id="starting-with-sequences">
+<div class="section" id="starting-with-sequences">
 <h2>Starting with Sequences<a class="headerlink" href="#starting-with-sequences" title="Permalink to this headline">#</a></h2>
 <blockquote>
 <div><p><em>In mathematics, a sequence is an enumerated collection of objects in which repetitions are allowed and order matters. Like a set, it contains members (also called elements, or terms). The number of elements (possibly infinite) is called the length of the sequence. Unlike a set, the same elements can appear multiple times at different positions in a sequence, and unlike a set, the order does matter. Formally, a sequence can be defined as a function from natural numbers (the positions of elements in the sequence) to the elements at each position.</em></p>
 </div></blockquote>
-</section>
-<section id="examples-of-sequences">
+</div>
+<div class="section" id="examples-of-sequences">
 <h2>Examples of Sequences<a class="headerlink" href="#examples-of-sequences" title="Permalink to this headline">#</a></h2>
 <p>Below, sequences are displayed visually.</p>
 <ul class="simple">
@@ -455,12 +469,12 @@ title="Print to PDF"
 </ul>
 <center>
     <img src = images/sequences_1.png />
-</center><section id="problems">
+</center><div class="section" id="problems">
 <h3>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="_images/sequence_2.png" /></p>
-</section>
-</section>
-<section id="visualizing-with-google-sheets">
+</div>
+</div>
+<div class="section" id="visualizing-with-google-sheets">
 <h2>Visualizing with Google Sheets<a class="headerlink" href="#visualizing-with-google-sheets" title="Permalink to this headline">#</a></h2>
 <p>Now, we will use google sheets do define and visualize the first ten terms of our four sequence.  To do so, we will define our functions in <strong>two</strong> ways.  The first method for defining function is a <em>recursive</em> definition.  This explains how to get from a previous term in a sequence <span class="math notranslate nohighlight">\(a_n\)</span> to the next term <span class="math notranslate nohighlight">\(a_{n+1}\)</span>.</p>
 <p>Let’s start with the first sequence:</p>
@@ -490,18 +504,18 @@ title="Print to PDF"
 </ul>
 <p>Define the first term of the sequence in the second column.  In the second cell, define your rule based on the previous term and index value.</p>
 <p><img alt="" src="_images/sheets3.png" /></p>
-<section id="problem">
+<div class="section" id="problem">
 <h3>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">#</a></h3>
 <p>Use google sheets to plot sequences A - D above.</p>
-</section>
-</section>
-<section id="closed-form-definition">
+</div>
+</div>
+<div class="section" id="closed-form-definition">
 <h2>Closed Form definition<a class="headerlink" href="#closed-form-definition" title="Permalink to this headline">#</a></h2>
 <p>An alternative approach to defining the sequences is to determine a rule in general where given the index value the function returns the term of the sequence.  For example, sequence A can be defined as:</p>
 <div class="math notranslate nohighlight">
 \[f(n) = (n + 1)^2\]</div>
 <p>Use closed form definitions to define sequences E-H from above on the second sheet named <em>closed</em>.</p>
-<section id="summary">
+<div class="section" id="summary">
 <h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
 <p>Today we examined tools for representing patterns of numbers using both <em>recursive</em> and <em>closed form</em> functions.  We used numbers, tables, and graphs to examine these.  Next class, we will dive deeper into sequences and functions and begin plotting and defining them using the Python computer language.</p>
 <ol class="simple">
@@ -509,9 +523,9 @@ title="Print to PDF"
 <li><p><span class="math notranslate nohighlight">\(a_n = [0, 3, 8, 15, 24]\)</span></p></li>
 <li><p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/First_six_triangular_numbers.svg/440px-First_six_triangular_numbers.svg.png" /></p></li>
 </ol>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -554,7 +568,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Jacob F. Koehler, PhD<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
