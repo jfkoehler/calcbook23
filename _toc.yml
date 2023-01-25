@@ -5,3 +5,4 @@ format: jb-book
 root: syllabus_2023
 chapters:
 - file: functions
+- file: 02_modeling_with_sequences
