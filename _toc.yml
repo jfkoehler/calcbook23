@@ -3,6 +3,10 @@
 
 format: jb-book
 root: syllabus_2023
-chapters:
-- file: functions
-- file: 02_modeling_with_sequences
+parts: 
+   - caption: Starting with Sequences
+     chapters:
+     - file: functions
+     - file: 02_modeling_with_sequences
+     - file: assignment_I
+

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Calculus I</title>
+    <title>Assignment 1: Sequences and Functions &#8212; Calculus I</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -46,8 +46,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Mathematical Models and More with Sequences" href="02_modeling_with_sequences.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,7 +105,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Starting with Sequences
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functions.html">
    Functions
@@ -111,6 +119,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="02_modeling_with_sequences.html">
    Mathematical Models and More with Sequences
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Assignment 1: Sequences and Functions
   </a>
  </li>
 </ul>
@@ -336,7 +349,52 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submission">
+   Submission
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-recurrence-relations">
+   Problem 1: Recurrence Relations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-closed-form">
+   Problem 2: Closed Form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3-fibonnacci-numbers">
+   Problem 3: Fibonnacci Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4-sequences-from-patterns">
+   Problem 4: Sequences from Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5-triangular-numbers">
+   Problem 5: Triangular Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-6-online-encyclopedia-of-integer-sequences">
+   Problem 6: Online Encyclopedia of Integer Sequences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-7-recaman-sequence-video">
+   Problem 7: Recaman Sequence Video
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-8-making-a-sequence">
+   Problem 8: Making a Sequence
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -346,7 +404,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Assignment 1: Sequences and Functions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -355,7 +413,52 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submission">
+   Submission
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-recurrence-relations">
+   Problem 1: Recurrence Relations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-closed-form">
+   Problem 2: Closed Form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3-fibonnacci-numbers">
+   Problem 3: Fibonnacci Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4-sequences-from-patterns">
+   Problem 4: Sequences from Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5-triangular-numbers">
+   Problem 5: Triangular Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-6-online-encyclopedia-of-integer-sequences">
+   Problem 6: Online Encyclopedia of Integer Sequences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-7-recaman-sequence-video">
+   Problem 7: Recaman Sequence Video
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-8-making-a-sequence">
+   Problem 8: Making a Sequence
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -366,74 +469,92 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="assignment-1-sequences-and-functions">
+<h1>Assignment 1: Sequences and Functions<a class="headerlink" href="#assignment-1-sequences-and-functions" title="Permalink to this headline">#</a></h1>
+<p>This assignment reviews our work from the first week.  As a reminder, here are the main ideas from the week:</p>
+<ul class="simple">
+<li><p>Describe patterns in sequences</p></li>
+<li><p>Use recursive definitions to define sequences</p></li>
+<li><p>Use closed form functions to define sequences</p></li>
+<li><p>Differentiate types of sequences based on how they change</p></li>
+</ul>
+<div class="section" id="submission">
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
+<p>For this assignment you are to create a new google sheet in your drive. Each question should be a seperate tab in the sheet.  Name the file based on your <code class="docutils literal notranslate"><span class="pre">firstname_lastname_calc_assignment_I</span></code>, set share settings to “anyone with link”.  Questions that ask for written explanations should be included as text cells that are easily readable and formatted correctly.  For help here, see <a class="reference external" href="https://support.google.com/docs/answer/46973?hl=en&amp;co=GENIE.Platform%3DDesktop">here</a>.</p>
+</div>
+<div class="section" id="problem-1-recurrence-relations">
+<h2>Problem 1: Recurrence Relations<a class="headerlink" href="#problem-1-recurrence-relations" title="Permalink to this headline">#</a></h2>
+<p>For each of the recurrence relations given below, generate the first 20 terms of the sequence and plot all the sequences together on the same plot.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_{n+1} = 2a_n + 5\)</span> with <span class="math notranslate nohighlight">\(a_0 = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{n+1} = -a_n + 11\)</span> with <span class="math notranslate nohighlight">\(a_0 = 31\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{n+1} = a_n + 5n + 1\)</span> with <span class="math notranslate nohighlight">\(a_0 = -3\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="problem-2-closed-form">
+<h2>Problem 2: Closed Form<a class="headerlink" href="#problem-2-closed-form" title="Permalink to this headline">#</a></h2>
+<p>For each of the functions below, use <span class="math notranslate nohighlight">\(x = 1, 2, 3, ..., 19, 20\)</span> to plot together on the same axes.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = 3x+ 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) = x^2 + 2x + 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) = 50(1.03)^x\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="problem-3-fibonnacci-numbers">
+<h2>Problem 3: Fibonnacci Numbers<a class="headerlink" href="#problem-3-fibonnacci-numbers" title="Permalink to this headline">#</a></h2>
+<p>Fibonnacci numbers are formed by summing the previous two values in the sequence.  In general we have:</p>
+<div class="math notranslate nohighlight">
+\[f_{n+1} = f_n + f_{n-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_1 = 1\)</span> and <span class="math notranslate nohighlight">\(f_2 = 1\)</span>.  This produces the sequence:</p>
+<div class="math notranslate nohighlight">
+\[1, 1, 2, 3, 5, 8, 13, ...\]</div>
+<p>Use your spreadsheet and a new tab to generate the first 50 fibonnacci numbers. Add a column that represents the ratio of successive fibonnacci numbers and plot this column.  Is anything interesting happening here?</p>
+</div>
+<div class="section" id="problem-4-sequences-from-patterns">
+<h2>Problem 4: Sequences from Patterns<a class="headerlink" href="#problem-4-sequences-from-patterns" title="Permalink to this headline">#</a></h2>
+<p>For each of the examples below, determine what the closed form of the pattern is, and use it to generate the first 20 terms for each of the examples on a new tab in your spreadsheet.</p>
+<p><img alt="" src="_images/sequence_2.png" /></p>
+</div>
+<div class="section" id="problem-5-triangular-numbers">
+<h2>Problem 5: Triangular Numbers<a class="headerlink" href="#problem-5-triangular-numbers" title="Permalink to this headline">#</a></h2>
+<p>An important sequence of numbers is the Triangular numbers.  Use the image below to determine a recursive definition for the sequence.</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/First_six_triangular_numbers.svg/440px-First_six_triangular_numbers.svg.png" /></p>
+</div>
+<div class="section" id="problem-6-online-encyclopedia-of-integer-sequences">
+<h2>Problem 6: Online Encyclopedia of Integer Sequences<a class="headerlink" href="#problem-6-online-encyclopedia-of-integer-sequences" title="Permalink to this headline">#</a></h2>
+<p>A very nice website is the <a class="reference external" href="https://oeis.org/wiki/Welcome">Online Encyclopedia of Integer Sequences</a>.  Please head over to the site and explore a bit.  Locate a sequence of interest to you and discuss what you find including a definition of the sequence either recursive or closed form.</p>
+</div>
+<div class="section" id="problem-7-recaman-sequence-video">
+<h2>Problem 7: Recaman Sequence Video<a class="headerlink" href="#problem-7-recaman-sequence-video" title="Permalink to this headline">#</a></h2>
+<p>A famous example of an integer sequence that has received more modern treatment is the Recaman sequence.  Please watch the video from Numberphile below and write a brief description of how the sequence looks and sounds.  Can you find any other interesting sounding sequences in the encyclopedia?</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Assignment 1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Recurrence Relations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="s1">&#39;FGC5TdIiT9U&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Closed Form</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Model I</span>
-</pre></div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="600"
+    height="300"
+    src="https://www.youtube.com/embed/FGC5TdIiT9U"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Model II</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Triangular Numbers</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Hexagonal Numbers</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Fibonnaci Numbers</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Online Encyclopedia of Integer Sequences: https://oeis.org/wiki/Welcome</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Recaman Sequence Video: https://www.youtube.com/watch?v=FGC5TdIiT9U</span>
-</pre></div>
-</div>
+<div class="section" id="problem-8-making-a-sequence">
+<h2>Problem 8: Making a Sequence<a class="headerlink" href="#problem-8-making-a-sequence" title="Permalink to this headline">#</a></h2>
+<p>In the video on the Recamán sequence, the presenter said that Recamán “created” this sequence.  While many sequences exist, let us pretend we don’t know and attempt to create a new sequence based on a recursive rule of your choice.  After you create the sequence, search the encyclopedia for terms and names of the sequence.  How does it sound?  What is its name and is there any interesting history about the sequence?</p>
 </div>
 </div>
 
@@ -464,6 +585,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02_modeling_with_sequences.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Mathematical Models and More with Sequences</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
