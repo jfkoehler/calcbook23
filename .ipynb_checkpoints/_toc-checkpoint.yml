@@ -1,0 +1,12 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: syllabus_2023
+parts: 
+   - caption: Starting with Sequences
+     chapters:
+     - file: functions
+     - file: 02_modeling_with_sequences
+     - file: assignment_I
+
