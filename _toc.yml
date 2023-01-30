@@ -9,4 +9,5 @@ parts:
      - file: functions
      - file: 02_modeling_with_sequences
      - file: assignment_I
+     - file: day3
 
