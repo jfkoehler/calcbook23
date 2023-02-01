@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Functions and Python &#8212; Calculus I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sequences and Summations" href="day3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Calculus I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus_2023.html">
+                    Course Description
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Starting with Sequences
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_modeling_with_sequences.html">
+   Mathematical Models and More with Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_I.html">
+   Assignment 1: Sequences and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day3.html">
+   Sequences and Summations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Functions and Python
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jfkoehler/calcbook23/master?urlpath=tree/./calc_functions_lab.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jfkoehler/calcbook23/blob/master/./calc_functions_lab.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23/issues/new?title=Issue%20on%20page%20%2Fcalc_functions_lab.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/calc_functions_lab.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Working with Functions and Python
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-text-and-symbols">
+   Using text and symbols
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbols-from-words">
+   Symbols from words
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbols-to-computer">
+   Symbols to computer
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#domain-for-functions">
+   Domain for functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Problems
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-non-polynomial-functions">
+     Plotting non-polynomial functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partial-sums-of-functions">
+     Partial sums of functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-computing-the-area-under-a-curve">
+   Problem: Computing the Area Under a Curve
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Working with Functions and Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Working with Functions and Python
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-text-and-symbols">
+   Using text and symbols
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbols-from-words">
+   Symbols from words
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbols-to-computer">
+   Symbols to computer
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#domain-for-functions">
+   Domain for functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Problems
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-non-polynomial-functions">
+     Plotting non-polynomial functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partial-sums-of-functions">
+     Partial sums of functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-computing-the-area-under-a-curve">
+   Problem: Computing the Area Under a Curve
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="working-with-functions-and-python">
+<h1>Working with Functions and Python<a class="headerlink" href="#working-with-functions-and-python" title="Permalink to this headline">#</a></h1>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Unknown_engraver_-_Humani_Victus_Instrumenta_-_Ars_Coquinaria_-_WGA23954.jpg/300px-Unknown_engraver_-_Humani_Victus_Instrumenta_-_Ars_Coquinaria_-_WGA23954.jpg" /></p>
+<p><strong>OBJECTIVES</strong></p>
+<ul class="simple">
+<li><p>Use text, symbols, graphs, and tables to represent functions</p></li>
+<li><p>Identify key characteristics of <strong>linear</strong>, <strong>quadratic</strong>, <strong>exponential</strong>, <strong>logarithmic</strong>, and <strong>trigonometric</strong> functions</p></li>
+<li><p>Explore polar form of functions and their plots</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-text-and-symbols">
+<h1>Using text and symbols<a class="headerlink" href="#using-text-and-symbols" title="Permalink to this headline">#</a></h1>
+<p>For the remainder of the class, we will work to present our final work in written form using the computer.  Paper and pencil can be handy for scratching out our ideas and work, but at the end of this we aim to formalize and present our work using the computer.</p>
+<p>To begin, your aim is to understand how to format text and mathematics like basic functions using <code class="docutils literal notranslate"><span class="pre">markdown</span></code> and <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code>.</p>
+<p><strong>Text Cells</strong></p>
+<p>To create a text cell in the notebooks you can hover over cells and use the <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">text</span></code> or in the upper left corner of the notebook there is the same button to add a text cell.</p>
+<p><img alt="" src="_images/textcell.png" /></p>
+<p>These text cells render normal text but also <code class="docutils literal notranslate"><span class="pre">HTML</span></code>, <code class="docutils literal notranslate"><span class="pre">markdown</span></code>, and <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code>.  There are basic formatting tools in the cells in the notebook but you are also able to format text explicitly.  Below, text is shown that will format mathematical functions.  To center the equation on the page we use <code class="docutils literal notranslate"><span class="pre">$$</span> <span class="pre">equation</span> <span class="pre">$$</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$f(x) = 3x^4 - 2x + 10$$
+</pre></div>
+</div>
+<p>Create a text cell below and add the text directly – you should see <span class="math notranslate nohighlight">\(f(x) = 3x^4 - 2x + 10\)</span> rendered.</p>
+<div class="section" id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h2>
+<p>What does the following text produce?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. $$f(x) = \frac{1}{x}$$
+2. $$g(x) = \sin(x)$$
+3. $$a_n = \frac{n^2}{2}$$
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="symbols-from-words">
+<h1>Symbols from words<a class="headerlink" href="#symbols-from-words" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p>a retail store owner who wants to sell T-shirts advertising his brand. He recalls that there is a fixed cost and variable cost, although he does not remember the values. He does know that the T-shirt printing company charges \<span class="math notranslate nohighlight">\(440 for 20 shirts and \\\)</span>1000 for 100 shirts.  Find the equation  <span class="math notranslate nohighlight">\(c = f(x)\)</span> that describes the total cost as a function of number of shirts and b. determine how many shirts he must sell to break even if he sells the shirts for $10 each.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Starting with 1, add 4 every time.  Represent this as a function <span class="math notranslate nohighlight">\(g(n)\)</span> that takes in an index and returns the term of the sequence at that value.</p></li>
+</ol>
+</div>
+<div class="section" id="symbols-to-computer">
+<h1>Symbols to computer<a class="headerlink" href="#symbols-to-computer" title="Permalink to this headline">#</a></h1>
+<p>In Python, we define functions as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>To evaluate the function at a given value, we call the function as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">function_name</span><span class="p">(</span><span class="n">input_val</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is demonstrated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using python and the name conventions below please define the following functions and evaluate them at the suggested points:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = x^3\)</span>, at <span class="math notranslate nohighlight">\(x = 2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(x) = 1/x\)</span> at <span class="math notranslate nohighlight">\(x = 1/10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h(x) = x^4 - 2x + 1\)</span> at <span class="math notranslate nohighlight">\(x = -2.1\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define function f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define function g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define function h</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="domain-for-functions">
+<h1>Domain for functions<a class="headerlink" href="#domain-for-functions" title="Permalink to this headline">#</a></h1>
+<p>Typically a function will be evaluated at more than one point.  We use the <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> function to define domains of a function.  For example, to evaluate the function <span class="math notranslate nohighlight">\(f(x) = x^2\)</span> at <span class="math notranslate nohighlight">\(x = [1, 2, 3, 4]\)</span> we need to define the function and a variable to serve as the domain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  4,  9, 16])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
+<p>With a function and domain defined, we can use <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to generate a plot of a function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f8e54cf4730&gt;]
+</pre></div>
+</div>
+<img alt="_images/calc_functions_lab_28_1.png" src="_images/calc_functions_lab_28_1.png" />
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Problems<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>For each of the following, functions below, define them and determine the given domain.  Create a plot of the given function.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = x^3\)</span>, at <span class="math notranslate nohighlight">\(x = [-3, -2, -1, 0, 1, 2, 3]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(x) = 1/x\)</span> at <span class="math notranslate nohighlight">\(x = [1, 2, 3, ..., 10]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h(x) = x^4 - 2x + 1\)</span> at <span class="math notranslate nohighlight">\(x = [0, .1, .2, .3, ..., 4.9, 5.0]\)</span></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="plotting-non-polynomial-functions">
+<h2>Plotting non-polynomial functions<a class="headerlink" href="#plotting-non-polynomial-functions" title="Permalink to this headline">#</a></h2>
+<p>There are common functions that are not as easily constructed.  For example:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = \sin(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(x) = e^x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h(x) = \log(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(j(x) = \sqrt{x}\)</span></p></li>
+</ul>
+<p>Here, we can use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> to determine each of these.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = \sin{x}\)</span> on <span class="math notranslate nohighlight">\(x \in [-2\pi, 2\pi]\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sin function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#domain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(x) = e^x\)</span> on <span class="math notranslate nohighlight">\(x \in [-5, 10]\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exponential function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#domain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(h(x) = \log{x}\)</span> on <span class="math notranslate nohighlight">\(x \in [0, 10]\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># logarithm </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># domain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="partial-sums-of-functions">
+<h2>Partial sums of functions<a class="headerlink" href="#partial-sums-of-functions" title="Permalink to this headline">#</a></h2>
+<p>Given the function <span class="math notranslate nohighlight">\(f(x) = x^2\)</span> on <span class="math notranslate nohighlight">\(x \in [0, 1, 2, 3, 4]\)</span> draw a plot of the function and determine the partial sum of the terms of <span class="math notranslate nohighlight">\(f(x)\)</span> using <code class="docutils literal notranslate"><span class="pre">np.cumsum</span></code>.</p>
+</div>
+</div>
+<div class="section" id="problem-computing-the-area-under-a-curve">
+<h1>Problem: Computing the Area Under a Curve<a class="headerlink" href="#problem-computing-the-area-under-a-curve" title="Permalink to this headline">#</a></h1>
+<p>For each of the examples below, your goal is to draw a plot of the given function.  Together, we will begin an approach for approximating the area under the curve.  We will draw the regions together and shade the area of interest.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = 4 - x\)</span> on <span class="math notranslate nohighlight">\(x \in [-2, 2]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) = 4 - x^2\)</span> on <span class="math notranslate nohighlight">\(x \in [-2, 2]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) = \sin{x}\)</span> on <span class="math notranslate nohighlight">\(x \in [0, \pi]\)</span></p></li>
+</ol>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="day3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sequences and Summations</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jacob F. Koehler, PhD<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
