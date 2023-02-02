@@ -55,41 +55,29 @@ import matplotlib.pyplot as plt
 # 3. $$a_n = \frac{n^2}{2}$$
 # ```
 
-# In[ ]:
+# 1. $$f(x) = \frac{1}{x}$$
 
+# 2. $$g(x) = \sin(x)$$
 
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# 3. $$a_n = \frac{n^2}{2}$$
 
 # ### Symbols from words
 # 
 # 1. a retail store owner who wants to sell T-shirts advertising his brand. He recalls that there is a fixed cost and variable cost, although he does not remember the values. He does know that the T-shirt printing company charges \\$440 for 20 shirts and \\$1000 for 100 shirts.  Find the equation  $c = f(x)$ that describes the total cost as a function of number of shirts and b. determine how many shirts he must sell to break even if he sells the shirts for \$10 each.
 
-# In[ ]:
-
-
-
-
+# ```{solution}
+# because the price varies by 560 for 80 shirts this equates an increase of 7 for each shirt
+# 
+# this also let's us know that 0 shirts would cost 300 -- so our function would be
+# 
+# $f(x) = 300 + 7x$
+# ```
+# 
+# 
 
 # 2. Starting with 1, add 4 every time.  Represent this as a function $g(n)$ that takes in an index and returns the term of the sequence at that value.
 
-# In[ ]:
-
-
-
-
+# $$g(n) = 1 + 4n$$
 
 # ### Symbols to computer 
 # 
@@ -283,32 +271,6 @@ plt.plot(x, f(x))
 # #### Partial sums of functions
 # 
 # Given the function $f(x) = x^2$ on $x \in [0, 1, 2, 3, 4]$ draw a plot of the function and determine the partial sum of the terms of $f(x)$ using `np.cumsum`.
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Problem: Computing the Area Under a Curve
-# 
-# For each of the examples below, your goal is to draw a plot of the given function.  Together, we will begin an approach for approximating the area under the curve.  We will draw the regions together and shade the area of interest.
-# 
-# 1. $f(x) = 4 - x$ on $x \in [-2, 2]$
-# 2. $f(x) = 4 - x^2$ on $x \in [-2, 2]$
-# 3. $f(x) = \sin{x}$ on $x \in [0, \pi]$
 
 # In[ ]:
 

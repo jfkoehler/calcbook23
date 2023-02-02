@@ -11,4 +11,5 @@ parts:
      - file: assignment_I
      - file: day3
      - file: calc_functions_lab
+     - file: assignment_II
 
