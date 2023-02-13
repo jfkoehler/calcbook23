@@ -13,4 +13,6 @@ parts:
      - file: calc_functions_lab
      - file: assignment_II
      - file: intro_integral
+     - file: area
+     - file: consumer_surplus
 

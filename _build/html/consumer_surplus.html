@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supply and Demand: Consumer Surplus &#8212; Calculus I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Riemann Sums and Definite Integrals" href="area.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/LoGo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculus I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus_2023.html">
+                    Course Description
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Starting with Sequences
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_modeling_with_sequences.html">
+   Mathematical Models and More with Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_I.html">
+   Assignment 1: Sequences and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day3.html">
+   Sequences and Summations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calc_functions_lab.html">
+   Working with Functions and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_II.html">
+   Homework 2: Plotting Functions and Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_integral.html">
+   The Problem of Areas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="area.html">
+   Riemann Sums and Definite Integrals
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Supply and Demand: Consumer Surplus
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jfkoehler/calcbook23/master?urlpath=tree/./consumer_surplus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jfkoehler/calcbook23/blob/master/./consumer_surplus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23/issues/new?title=Issue%20on%20page%20%2Fconsumer_surplus.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/consumer_surplus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equilibrium-price">
+   Equilibrium Price
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#price-discrimination">
+   Price Discrimination
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-consumer-surplus">
+   The Consumer Surplus
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volume-problems">
+     Volume Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Supply and Demand: Consumer Surplus</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equilibrium-price">
+   Equilibrium Price
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#price-discrimination">
+   Price Discrimination
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-consumer-surplus">
+   The Consumer Surplus
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volume-problems">
+     Volume Problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50838873-3', 'auto');
+  ga('send', 'pageview');
+
+</script><div class="tex2jax_ignore mathjax_ignore section" id="supply-and-demand-consumer-surplus">
+<h1>Supply and Demand: Consumer Surplus<a class="headerlink" href="#supply-and-demand-consumer-surplus" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<p><strong>GOALS:</strong></p>
+<ul class="simple">
+<li><p>Understand concepts of consumer and producer surplus</p></li>
+<li><p>Use definite integrals to solve problems involving consumer and producer surplus</p></li>
+</ul>
+<hr class="docutils" />
+<p>Economists will often refer to <strong>supply</strong> and <strong>demand</strong> curves.</p>
+<p>A <strong>supply curve</strong> is a cost of production function that relates some quantity of goods to a price that attracts this amount at market.</p>
+<p>A <strong>demand curve</strong> is a function that relates a quantity of goods to a price that the market would be cleared of that quantity.</p>
+<p>For example, suppose we have a supply curve <span class="math notranslate nohighlight">\(S\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[S(q) = q^2\]</div>
+<p>and a demand curve <span class="math notranslate nohighlight">\(D\)</span> of:</p>
+<div class="math notranslate nohighlight">
+\[D(q) = (q - 20)^2\]</div>
+<p>We can plot these as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="equilibrium-price">
+<h2>Equilibrium Price<a class="headerlink" href="#equilibrium-price" title="Permalink to this headline">#</a></h2>
+<p>Where the Supply and Demand curves intersect, we have the <strong>equilibrium price</strong> for the good under consideration.  In order to find this value, we need to solve the equation:</p>
+<div class="math notranslate nohighlight">
+\[S(q) = D(q)\]</div>
+<p>We can use Sympy to accomplish this with the <code class="docutils literal notranslate"><span class="pre">Eq</span></code> and <code class="docutils literal notranslate"><span class="pre">Solve</span></code> commands.</p>
+<p>Now, we can update our plot to include this point and add some text and an arrow pointing to the equilibrium point using the matplotlib’s <code class="docutils literal notranslate"><span class="pre">annotate</span></code> function.  The draws an arrow with some text to a point on the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize= (10, 8))#create figure and reset q to be numbers</span>
+<span class="c1"># q = np.linspace(0, 16, 1000)</span>
+
+
+<span class="c1"># plt.plot(q, S(q), label = &quot;Supply Curve&quot;)#plot supply, demand, and equilibrium points</span>
+<span class="c1"># plt.plot(q, D(q), label = &quot;Demand Curve&quot;)</span>
+<span class="c1"># plt.plot(10, 100, &#39;o&#39;, markersize = 14)</span>
+
+
+<span class="c1"># plt.title(&quot;Supply and Demand&quot;)#add titles and legend</span>
+<span class="c1"># plt.legend(frameon = False)</span>
+<span class="c1"># plt.xlabel(&quot;Quantity $q$&quot;)</span>
+<span class="c1"># plt.ylabel(&quot;Price&quot;)</span>
+
+
+<span class="c1"># ax = plt.axes()#add arrow with annotation</span>
+<span class="c1"># ax.annotate(&#39;Equilibrium at (10, 100)&#39;, xy=(10,100), xytext=(10, 250), arrowprops=dict(facecolor=&#39;black&#39;))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="price-discrimination">
+<h2>Price Discrimination<a class="headerlink" href="#price-discrimination" title="Permalink to this headline">#</a></h2>
+<p>Price discrimination refers to the different prices that different consumers are willing to pay for the same product.  For example, some people may be willing to pay $16 for a six pack of beer while others would refuse.  In order to address different consumers, a corporation might do something like market the same beer under a different logo and name in different kinds of stores.</p>
+<p>If the goods producer is able to determine this perfectly, they will have achieved perfect <strong>price discrimination</strong>.  The beer example demonstrates only a partial price discrimination.  An example of perfect price discrimination might be a pay what you want approach where each consumer determine their own price for a good.</p>
+<p>In a partial price discrimination scenario, we would have a picture like our step functions, where the width of each rectangle represents a quantity of a good and the height represents the price that this amount of goods sells for.</p>
+<p>Let’s visualize the Partial and Perfect Price discrimination situation where we have <span class="math notranslate nohighlight">\(\Delta q = 1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Partial Price Discrimination&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price of good $p$&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;sell $\Delta q$ at price $p$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">73</span><span class="n">acbed3e279</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Partial Price Discrimination&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;D&#39; is not defined
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 576x360 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The area of one of the rectangles then represents the <strong>revenue</strong> to the producer.  Consider the first rectangle.  Here, we have 1 unit of a good and sell this at 400 dollars.  Similarly, we sell a second unit of this good for 300.  From these sales we would have made 700 in total.</p>
+<div class="math notranslate nohighlight">
+\[ \text{Revenue} = \sum_{i = 1}^n \Delta q D(i\Delta q)\]</div>
+<p>Perfect Price Discrimination would be modeled by the continuous case and the Revenue by the Definite Integral.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Perfect Price Discrimination&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price of good $p$&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Area Under Curve is Revenue </span><span class="se">\n</span><span class="s1">$\int_0^</span><span class="si">{16}</span><span class="s1">D(q) dq$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(10, 250, &#39;Area Under Curve is Revenue \n$\\int_0^{16}D(q) dq$&#39;)
+</pre></div>
+</div>
+<img alt="_images/consumer_surplus_15_1.png" src="_images/consumer_surplus_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="the-consumer-surplus">
+<h2>The Consumer Surplus<a class="headerlink" href="#the-consumer-surplus" title="Permalink to this headline">#</a></h2>
+<p>When a marketplace finds consumers paying the same price for a good, we are at the <strong>equilibrium price</strong>.  Here, if you think about moving backwards from equilibrium, the price of the good rises, its suppy falls, and there are fewer transactions.  Another way to interpret the area under the Demand curve, is as the value to consumers.</p>
+<p>If there is a difference between this value and what the consumers end up paying, we have a consumer surplus.  This is represented graphically as the area determined by the rectangle formed by the equilibrium price.  The difference between the area under the Demand curve and this rectangle is the <strong>consumer surplus</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize = (12,7))</span>
+<span class="c1"># plt.plot(q, D(q))</span>
+<span class="c1"># plt.plot(q, S(q))</span>
+<span class="c1"># plt.fill_between(q, D(q), 100, where = (D(q) &gt; 100), color = &#39;green&#39;, alpha = 0.5, hatch = &#39;-&#39;)</span>
+<span class="c1"># plt.fill_between(q, 100, where = (q&lt;10), alpha = 0.3, hatch = &#39;|&#39;)</span>
+
+<span class="c1"># plt.title(&quot;Consumer Surplus&quot;)</span>
+<span class="c1"># plt.xlabel(&quot;Quantity of good $q$&quot;)</span>
+<span class="c1"># plt.ylabel(&quot;Price of good $p$&quot;)</span>
+<span class="c1"># ax = plt.axes()</span>
+<span class="c1"># ax.annotate(&#39;Consumer Surplus&#39;, xy=(4, 200), xytext=(8, 300), arrowprops=dict(facecolor=&#39;black&#39;))</span>
+<span class="c1"># ax.annotate(&#39;Total Revenue&#39;, xy = (5, 50), xytext = (12,100), arrowprops=dict(facecolor=&#39;black&#39;))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This would be determined by the area under the Demand Curve, but above the horizontal line formed by the equlibrium price(<span class="math notranslate nohighlight">\(p^\star\)</span>).  Thus, we can represent this with the definite integral:</p>
+<div class="math notranslate nohighlight">
+\[\int_0^{10} D(q) - p^\star dq\]</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Suppose the supply curve is approximated by the function</p>
+<div class="math notranslate nohighlight">
+\[p = S(q) = \frac{q^2}{500,000}\]</div>
+<p>and the demand curve by the function</p>
+<div class="math notranslate nohighlight">
+\[p = D(q) = 144 - \frac{q}{500}\]</div>
+<p>for <span class="math notranslate nohighlight">\(0 \leq q \leq 65,000\)</span>.  Determine the equilibrium price and Consumer Surplus.</p>
+</div>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>If a supply curve is modeled by the equation <span class="math notranslate nohighlight">\(p = 200 + 0.2x^{3/2}\)</span>, find the producer surplus when the selling price is $400.</p>
+</div>
+<div class="section" id="volume-problems">
+<h3>Volume Problems<a class="headerlink" href="#volume-problems" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(y = 2 - \frac{1}{2}x\)</span>, <span class="math notranslate nohighlight">\(y = 0\)</span>, <span class="math notranslate nohighlight">\(x=1\)</span>, <span class="math notranslate nohighlight">\(x = 2\)</span>, about <span class="math notranslate nohighlight">\(x\)</span>-axis.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x=2\sqrt{y}\)</span>, <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(y = 9\)</span>; about the <span class="math notranslate nohighlight">\(y\)</span>-axis.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y = x^3\)</span>, <span class="math notranslate nohighlight">\(y = x\)</span>, <span class="math notranslate nohighlight">\(x \geq 0\)</span>; about the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y = x\)</span>, <span class="math notranslate nohighlight">\(y = \sqrt{x}\)</span>, about <span class="math notranslate nohighlight">\(y = 1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y = 1 + \sec(x)\)</span>, <span class="math notranslate nohighlight">\(y = 3\)</span>, about <span class="math notranslate nohighlight">\(y = 1\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="area.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Riemann Sums and Definite Integrals</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jacob F. Koehler, PhD<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
