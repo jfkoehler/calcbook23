@@ -1,0 +1,771 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riemann Sums and Definite Integrals &#8212; Calculus I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Supply and Demand: Consumer Surplus" href="consumer_surplus.html" />
+    <link rel="prev" title="The Problem of Areas" href="intro_integral.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/LoGo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculus I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus_2023.html">
+                    Course Description
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Starting with Sequences
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_modeling_with_sequences.html">
+   Mathematical Models and More with Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_I.html">
+   Assignment 1: Sequences and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day3.html">
+   Sequences and Summations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calc_functions_lab.html">
+   Working with Functions and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_II.html">
+   Homework 2: Plotting Functions and Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_integral.html">
+   The Problem of Areas
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Riemann Sums and Definite Integrals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="consumer_surplus.html">
+   Supply and Demand: Consumer Surplus
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jfkoehler/calcbook23/master?urlpath=tree/./area.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jfkoehler/calcbook23/blob/master/./area.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23/issues/new?title=Issue%20on%20page%20%2Farea.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/area.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#riemann-sum">
+   Riemann Sum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#riemann-sum-a-definition">
+   Riemann Sum: A Definition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taking-it-to-the-limit">
+     Taking it to the limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-definite-integral">
+     The Definite Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-ii-net-change-theorem">
+     Application II: Net Change Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-iii-area-between-curves">
+     Application III: Area Between Curves
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Riemann Sums and Definite Integrals</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#riemann-sum">
+   Riemann Sum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#riemann-sum-a-definition">
+   Riemann Sum: A Definition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taking-it-to-the-limit">
+     Taking it to the limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-definite-integral">
+     The Definite Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-ii-net-change-theorem">
+     Application II: Net Change Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-iii-area-between-curves">
+     Application III: Area Between Curves
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="riemann-sums-and-definite-integrals">
+<h1>Riemann Sums and Definite Integrals<a class="headerlink" href="#riemann-sums-and-definite-integrals" title="Permalink to this headline">#</a></h1>
+<p><strong>OBJECTIVE</strong></p>
+<ul class="simple">
+<li><p>Approximate area under a curve using Riemann Sums</p></li>
+<li><p>Investigate patterns as we move to infinite rectangles</p></li>
+<li><p>Define the <em>Definite Integral</em> formally and informally</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">python</span></code> to determine the definite integral</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="riemann-sum">
+<h2>Riemann Sum<a class="headerlink" href="#riemann-sum" title="Permalink to this headline">#</a></h2>
+<p>Starting where we left off with an approximation of the area under a function, on a closed interval we aim to determine a general formula for the area under a curve based on the following inputs:</p>
+<ul class="simple">
+<li><p>A function <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p>A domain <span class="math notranslate nohighlight">\([a, b]\)</span>.</p></li>
+<li><p>A number of approximating rectangles <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+<p>We use these to determine the area as a sum of areas of rectangles with some width and height.</p>
+<div class="math notranslate nohighlight">
+\[\text{Area} \approx \sum_{i = 1}^n \text{widths} \times \text{heights}\]</div>
+<p>we make life easier by making the rectangles all equal width and are left with the idea:</p>
+<div class="math notranslate nohighlight">
+\[\text{Area} \approx \text{width} \times \sum_{i = 1}^n \text{heights}\]</div>
+</div>
+<div class="section" id="riemann-sum-a-definition">
+<h2>Riemann Sum: A Definition<a class="headerlink" href="#riemann-sum-a-definition" title="Permalink to this headline">#</a></h2>
+<p><em>In mathematics, a Riemann sum is a certain kind of approximation of an integral by a finite sum. It is named after nineteenth century German mathematician Bernhard Riemann. One very common application is approximating the area of functions or lines on a graph, but also the length of curves and other approximations.</em> – <a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_sum">Source</a></p>
+<hr class="docutils" />
+<p>A Riemann sum <span class="math notranslate nohighlight">\(S\)</span> of <span class="math notranslate nohighlight">\(f\)</span> over <span class="math notranslate nohighlight">\(I\)</span> with partition <span class="math notranslate nohighlight">\(P\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle S=\sum _{i=1}^{n}f(x_{i}^{*})\,\Delta x_{i}\]</div>
+<p>where</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \Delta x_{i}=x_{i}-x_{i-1}\)</span> and <span class="math notranslate nohighlight">\(x_{i}^{*} \in [x_{i-1},x_{i}]\)</span></p>
+<hr class="docutils" />
+<p><strong>PROBLEM</strong></p>
+<ul class="simple">
+<li><p>Find an approximation for the area under the curve <span class="math notranslate nohighlight">\(f(x) = x^3\)</span> on <span class="math notranslate nohighlight">\([1, 3]\)</span> with <span class="math notranslate nohighlight">\(n = 5\)</span>.</p></li>
+</ul>
+<p>Consider the function <span class="math notranslate nohighlight">\(f(x) = 4 - x^2\)</span> on the interval <span class="math notranslate nohighlight">\([-2,2]\)</span>.</p>
+<ul class="simple">
+<li><p>Draw a plot of the function</p></li>
+<li><p>Use the above formula for <span class="math notranslate nohighlight">\(L(4)\)</span> to find an approximation for the area under the curve.</p></li>
+</ul>
+<div class="section" id="taking-it-to-the-limit">
+<h3>Taking it to the limit<a class="headerlink" href="#taking-it-to-the-limit" title="Permalink to this headline">#</a></h3>
+<p>What happens if we increase the number of rectangles?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">def</span> <span class="nf">riemann_slider</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#left endpoint</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#right endpoint</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="c1">#width of rectangles</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1">#plot the function</span>
+    <span class="n">bases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span> <span class="o">+</span> <span class="n">width</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span> <span class="c1">#determine base points</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bases</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">bases</span><span class="p">),</span> <span class="n">width</span> <span class="o">=</span> <span class="n">width</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s1">&#39;edge&#39;</span><span class="p">,</span> 
+           <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1">#plot the rectangles</span>
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="k">for</span> <span class="n">height</span> <span class="ow">in</span> <span class="n">f</span><span class="p">(</span><span class="n">bases</span><span class="p">)]</span> <span class="c1">#find the area</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The approximate area under f is </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">areas</span><span class="p">)</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">riemann_slider</span><span class="p">,</span>  <span class="n">n</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "a8601b357e51491bbf05ca5c786720c1"}
+</script></div>
+</div>
+</div>
+<div class="section" id="the-definite-integral">
+<h3>The Definite Integral<a class="headerlink" href="#the-definite-integral" title="Permalink to this headline">#</a></h3>
+<center>
+<img src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Integral_example.svg/600px-Integral_example.svg.png' width = 50%/>
+</center>
+<p>In mathematics, an integral assigns numbers to functions in a way that describes displacement, area, volume, and other concepts that arise by combining infinitesimal data. The process of finding integrals is called integration. Along with differentiation, integration is a fundamental operation of calculus, and serves as a tool to solve problems in mathematics and physics involving the area of an arbitrary shape, the length of a curve, and the volume of a solid, among others.</p>
+<div class="math notranslate nohighlight">
+\[\int_a^b f(x) dx\]</div>
+<p><strong>Examples</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\int_0^2 x^2 dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_{-\pi}^{\pi} \sin{x}dx\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define the function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#determine domain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot it</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find area</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define the function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#determine the domain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot it</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the area</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="application-ii-net-change-theorem">
+<h3>Application II: Net Change Theorem<a class="headerlink" href="#application-ii-net-change-theorem" title="Permalink to this headline">#</a></h3>
+<p>The net change theorem considers the integral of a rate of change. It says that when a quantity changes, the new value equals the initial value plus the integral of the rate of change of that quantity. The formula can be expressed in two ways. The second is more familiar; it is simply the definite integral.</p>
+<p><strong>EXAMPLE</strong>: Suppose a car is moving due north (the positive direction) at 40 mph between 2 p.m. and 4 p.m., then the car moves south at 30 mph between 4 p.m. and 5 p.m.</p>
+<p><strong>PROBLEMS</strong></p>
+<ol class="simple">
+<li><p>Given a velocity function <span class="math notranslate nohighlight">\(v(t) = 3t - 5\)</span> (in meters per second) for a particle in motion from time <span class="math notranslate nohighlight">\(t = 0\)</span> to time <span class="math notranslate nohighlight">\(t = 3\)</span>, find the net displacement of the particle.</p></li>
+<li><p>Find the net displacement and total distance traveled in meters given the velocity function <span class="math notranslate nohighlight">\(f(t) = .5e^t - 2\)</span> over the interval <span class="math notranslate nohighlight">\([0,2]\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="application-iii-area-between-curves">
+<h3>Application III: Area Between Curves<a class="headerlink" href="#application-iii-area-between-curves" title="Permalink to this headline">#</a></h3>
+<p>Consider the curves <span class="math notranslate nohighlight">\(f(x) = \sqrt{x}\)</span> and <span class="math notranslate nohighlight">\(g(x) = x^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define the functions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot them together</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#examine area</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Problem</strong></p>
+<ol class="simple">
+<li><p>Area between <span class="math notranslate nohighlight">\(y = x^2\)</span> and <span class="math notranslate nohighlight">\(y = x^3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = e^x\)</span> and <span class="math notranslate nohighlight">\(y = e^{2x - 1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = \cos{x}\)</span> and <span class="math notranslate nohighlight">\(y = \cos^2{x}\)</span> on <span class="math notranslate nohighlight">\([-\pi, \pi]\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"339165b6f0b247f4807eb6497ed80b3d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b4309ba1d10448e1ac4110eab0368409": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "fcb69682632242aa81c3914a0489d4f9": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "n", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_339165b6f0b247f4807eb6497ed80b3d", "max": 100, "min": 1, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 2, "style": "IPY_MODEL_b4309ba1d10448e1ac4110eab0368409", "value": 1}}, "49505239d01e47c29df25231ee400adf": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a8601b357e51491bbf05ca5c786720c1": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_fcb69682632242aa81c3914a0489d4f9", "IPY_MODEL_09ed7b7b840c482a89d537d77d137d8c"], "layout": "IPY_MODEL_49505239d01e47c29df25231ee400adf"}}, "c4e4210ecff047119ad65445c0053e7b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "09ed7b7b840c482a89d537d77d137d8c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_c4e4210ecff047119ad65445c0053e7b", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {"needs_background": "light"}, "data": {"text/plain": "<Figure size 432x288 with 1 Axes>", "image/png": "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\n"}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro_integral.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Problem of Areas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="consumer_surplus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Supply and Demand: Consumer Surplus</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jacob F. Koehler, PhD<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
