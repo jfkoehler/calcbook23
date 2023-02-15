@@ -14,5 +14,6 @@ parts:
      - file: assignment_II
      - file: intro_integral
      - file: area
+     - file: areas_II
      - file: consumer_surplus
 
