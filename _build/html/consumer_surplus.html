@@ -46,13 +46,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Riemann Sums and Definite Integrals" href="area.html" />
+    <link rel="next" title="Area Between Curves and Wealth Distribution" href="gini_index.html" />
+    <link rel="prev" title="The Definite Integral" href="areas_II.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -158,9 +157,24 @@ const thebe_selector_output = ".output, .cell_output"
    Riemann Sums and Definite Integrals
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="areas_II.html">
+   The Definite Integral
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Supply and Demand: Consumer Surplus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gini_index.html">
+   Area Between Curves and Wealth Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gini_extra.html">
+   Area Between Curves and Application to Equality
   </a>
  </li>
 </ul>
@@ -412,11 +426,6 @@ title="Print to PDF"
      Example
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#volume-problems">
-     Volume Problems
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -461,11 +470,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      Example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#volume-problems">
-     Volume Problems
     </a>
    </li>
   </ul>
@@ -517,34 +521,48 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">q</span><span class="p">):</span> <span class="k">return</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">def</span> <span class="nf">D</span><span class="p">(</span><span class="n">q</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="n">q</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="equilibrium-price">
 <h2>Equilibrium Price<a class="headerlink" href="#equilibrium-price" title="Permalink to this headline">#</a></h2>
 <p>Where the Supply and Demand curves intersect, we have the <strong>equilibrium price</strong> for the good under consideration.  In order to find this value, we need to solve the equation:</p>
 <div class="math notranslate nohighlight">
 \[S(q) = D(q)\]</div>
-<p>We can use Sympy to accomplish this with the <code class="docutils literal notranslate"><span class="pre">Eq</span></code> and <code class="docutils literal notranslate"><span class="pre">Solve</span></code> commands.</p>
+<p>We can use Sympy to accomplish this with the <code class="docutils literal notranslate"><span class="pre">Eq</span></code> and <code class="docutils literal notranslate"><span class="pre">Solve</span></code> commands or scratch this out by hand.</p>
+<div class="math notranslate nohighlight">
+\[q^2 = (q - 20)^2\]</div>
 <p>Now, we can update our plot to include this point and add some text and an arrow pointing to the equilibrium point using the matplotlib’s <code class="docutils literal notranslate"><span class="pre">annotate</span></code> function.  The draws an arrow with some text to a point on the graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize= (10, 8))#create figure and reset q to be numbers</span>
-<span class="c1"># q = np.linspace(0, 16, 1000)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span><span class="c1">#create figure and reset q to be numbers</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
 
-<span class="c1"># plt.plot(q, S(q), label = &quot;Supply Curve&quot;)#plot supply, demand, and equilibrium points</span>
-<span class="c1"># plt.plot(q, D(q), label = &quot;Demand Curve&quot;)</span>
-<span class="c1"># plt.plot(10, 100, &#39;o&#39;, markersize = 14)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">S</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Supply Curve&quot;</span><span class="p">)</span><span class="c1">#plot supply, demand, and equilibrium points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Demand Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Supply and Demand&quot;</span><span class="p">)</span><span class="c1">#add titles and legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity $q$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 
-<span class="c1"># plt.title(&quot;Supply and Demand&quot;)#add titles and legend</span>
-<span class="c1"># plt.legend(frameon = False)</span>
-<span class="c1"># plt.xlabel(&quot;Quantity $q$&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;Price&quot;)</span>
-
-
-<span class="c1"># ax = plt.axes()#add arrow with annotation</span>
-<span class="c1"># ax.annotate(&#39;Equilibrium at (10, 100)&#39;, xy=(10,100), xytext=(10, 250), arrowprops=dict(facecolor=&#39;black&#39;))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Equilibrium at (10, 100)&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(10, 250, &#39;Equilibrium at (10, 100)&#39;)
+</pre></div>
+</div>
+<img alt="_images/consumer_surplus_9_1.png" src="_images/consumer_surplus_9_1.png" />
 </div>
 </div>
 </div>
@@ -569,27 +587,15 @@ title="Print to PDF"
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price of good $p$&quot;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;sell $\Delta q$ at price $p$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;sell $\Delta q$ at price $p$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">73</span><span class="n">acbed3e279</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Partial Price Discrimination&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;D&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(10, 250, &#39;sell $\\Delta q$ at price $p$&#39;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 576x360 with 0 Axes&gt;
-</pre></div>
-</div>
+<img alt="_images/consumer_surplus_12_1.png" src="_images/consumer_surplus_12_1.png" />
 </div>
 </div>
 <p>The area of one of the rectangles then represents the <strong>revenue</strong> to the producer.  Consider the first rectangle.  Here, we have 1 unit of a good and sell this at 400 dollars.  Similarly, we sell a second unit of this good for 300.  From these sales we would have made 700 in total.</p>
@@ -606,8 +612,7 @@ title="Print to PDF"
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price of good $p$&quot;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Area Under Curve is Revenue </span><span class="se">\n</span><span class="s1">$\int_0^</span><span class="si">{16}</span><span class="s1">D(q) dq$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Area Under Curve is Revenue </span><span class="se">\n</span><span class="s1">$\int_0^</span><span class="si">{16}</span><span class="s1">D(q) dq$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -625,20 +630,25 @@ title="Print to PDF"
 <p>If there is a difference between this value and what the consumers end up paying, we have a consumer surplus.  This is represented graphically as the area determined by the rectangle formed by the equilibrium price.  The difference between the area under the Demand curve and this rectangle is the <strong>consumer surplus</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize = (12,7))</span>
-<span class="c1"># plt.plot(q, D(q))</span>
-<span class="c1"># plt.plot(q, S(q))</span>
-<span class="c1"># plt.fill_between(q, D(q), 100, where = (D(q) &gt; 100), color = &#39;green&#39;, alpha = 0.5, hatch = &#39;-&#39;)</span>
-<span class="c1"># plt.fill_between(q, 100, where = (q&lt;10), alpha = 0.3, hatch = &#39;|&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">S</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="n">where</span> <span class="o">=</span> <span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">hatch</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">where</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">hatch</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="p">)</span>
 
-<span class="c1"># plt.title(&quot;Consumer Surplus&quot;)</span>
-<span class="c1"># plt.xlabel(&quot;Quantity of good $q$&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;Price of good $p$&quot;)</span>
-<span class="c1"># ax = plt.axes()</span>
-<span class="c1"># ax.annotate(&#39;Consumer Surplus&#39;, xy=(4, 200), xytext=(8, 300), arrowprops=dict(facecolor=&#39;black&#39;))</span>
-<span class="c1"># ax.annotate(&#39;Total Revenue&#39;, xy = (5, 50), xytext = (12,100), arrowprops=dict(facecolor=&#39;black&#39;))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Consumer Surplus&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Quantity of good $q$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price of good $p$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Consumer Surplus&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Total Revenue&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">xytext</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(12, 100, &#39;Total Revenue&#39;)
+</pre></div>
+</div>
+<img alt="_images/consumer_surplus_17_1.png" src="_images/consumer_surplus_17_1.png" />
 </div>
 </div>
 <p>This would be determined by the area under the Demand Curve, but above the horizontal line formed by the equlibrium price(<span class="math notranslate nohighlight">\(p^\star\)</span>).  Thus, we can represent this with the definite integral:</p>
@@ -657,16 +667,6 @@ title="Print to PDF"
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>If a supply curve is modeled by the equation <span class="math notranslate nohighlight">\(p = 200 + 0.2x^{3/2}\)</span>, find the producer surplus when the selling price is $400.</p>
-</div>
-<div class="section" id="volume-problems">
-<h3>Volume Problems<a class="headerlink" href="#volume-problems" title="Permalink to this headline">#</a></h3>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(y = 2 - \frac{1}{2}x\)</span>, <span class="math notranslate nohighlight">\(y = 0\)</span>, <span class="math notranslate nohighlight">\(x=1\)</span>, <span class="math notranslate nohighlight">\(x = 2\)</span>, about <span class="math notranslate nohighlight">\(x\)</span>-axis.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x=2\sqrt{y}\)</span>, <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(y = 9\)</span>; about the <span class="math notranslate nohighlight">\(y\)</span>-axis.</p></li>
-<li><p><span class="math notranslate nohighlight">\(y = x^3\)</span>, <span class="math notranslate nohighlight">\(y = x\)</span>, <span class="math notranslate nohighlight">\(x \geq 0\)</span>; about the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p></li>
-<li><p><span class="math notranslate nohighlight">\(y = x\)</span>, <span class="math notranslate nohighlight">\(y = \sqrt{x}\)</span>, about <span class="math notranslate nohighlight">\(y = 1\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(y = 1 + \sec(x)\)</span>, <span class="math notranslate nohighlight">\(y = 3\)</span>, about <span class="math notranslate nohighlight">\(y = 1\)</span>.</p></li>
-</ol>
 </div>
 </div>
 </div>
@@ -698,12 +698,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="area.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="areas_II.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Riemann Sums and Definite Integrals</p>
+            <p class="prev-next-title">The Definite Integral</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="gini_index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Area Between Curves and Wealth Distribution</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

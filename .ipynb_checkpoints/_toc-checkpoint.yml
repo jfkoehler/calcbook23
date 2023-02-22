@@ -16,4 +16,6 @@ parts:
      - file: area
      - file: areas_II
      - file: consumer_surplus
+     - file: gini_index
+     - file: gini_extra
 
