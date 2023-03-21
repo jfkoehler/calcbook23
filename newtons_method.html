@@ -1,0 +1,970 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newton’s Method &#8212; Calculus I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Review" href="derv_review.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/LoGo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculus I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus_2023.html">
+                    Course Description
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Starting with Sequences
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_modeling_with_sequences.html">
+   Mathematical Models and More with Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_I.html">
+   Assignment 1: Sequences and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day3.html">
+   Sequences and Summations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calc_functions_lab.html">
+   Working with Functions and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment_II.html">
+   Homework 2: Plotting Functions and Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_integral.html">
+   The Problem of Areas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="area.html">
+   Riemann Sums and Definite Integrals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="areas_II.html">
+   The Definite Integral
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="consumer_surplus.html">
+   Supply and Demand: Consumer Surplus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gini_index.html">
+   Area Between Curves and Wealth Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gini_extra.html">
+   Area Between Curves and Application to Equality
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Derivatives
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="derv_review.html">
+   Review
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Newton’s Method
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jfkoehler/calcbook23/master?urlpath=tree/./newtons_method.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jfkoehler/calcbook23/blob/master/./newtons_method.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jfkoehler/calcbook23/issues/new?title=Issue%20on%20page%20%2Fnewtons_method.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/newtons_method.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Newton’s Method</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50838873-3', 'auto');
+  ga('send', 'pageview');
+
+</script><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-1-c4ec050ecea6&gt;:4: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+  plt.style.use(&#39;seaborn-white&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="newton-s-method">
+<h1>Newton’s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">6</span> <span class="o">-</span> <span class="mf">1.4</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mf">0.00001</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">/</span><span class="mf">0.00001</span>
+
+<span class="k">def</span> <span class="nf">tan_line</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">n</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tan_line</span><span class="p">(</span><span class="mf">1.3</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;$x_0$&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">(</span><span class="mf">1.3</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">n</span><span class="p">(</span><span class="mf">1.3</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Finding the next Approximation </span><span class="se">\n</span><span class="s2">in Newton&#39;s Method&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/newton2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/newtons_method_3_0.png" src="_images/newtons_method_3_0.png" />
+</div>
+</div>
+<p><strong>PROBLEM</strong></p>
+<ol class="simple">
+<li><p>Find a formula for <span class="math notranslate nohighlight">\(x_1\)</span> in terms of <span class="math notranslate nohighlight">\(x_0\)</span>.</p></li>
+<li><p>Find a formula for <span class="math notranslate nohighlight">\(x_2\)</span> in terms of <span class="math notranslate nohighlight">\(x_0\)</span>.</p></li>
+<li><p>Find a general formula for <span class="math notranslate nohighlight">\(x_{n+1}\)</span> in terms of <span class="math notranslate nohighlight">\(x_n\)</span>.</p></li>
+</ol>
+<p><img alt="" src="_images/newton2.png" /></p>
+<p>Tangent line at <span class="math notranslate nohighlight">\(x_0\)</span> has goes through the point <span class="math notranslate nohighlight">\((x_0, f(x_0)\)</span> with slope <span class="math notranslate nohighlight">\(f'(x_0)\)</span>.  From here, we can use our point slope form of a linear function and write:</p>
+<div class="math notranslate nohighlight">
+\[y - y_0 = m(x-x_0)\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight">
+\[y - f(x_0) = f'(x_0)(x - x_0)\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[y = f'(x_0)(x - x_0) + f(x_0)\]</div>
+<p>The value for <span class="math notranslate nohighlight">\(x_1\)</span> is when this line crosses the <span class="math notranslate nohighlight">\(x\)</span>-axis, or when <span class="math notranslate nohighlight">\(y = 0\)</span>.  Hence</p>
+<div class="math notranslate nohighlight">
+\[0 = f'(x_0)(x_1 - x_0) + f(x_0)\]</div>
+<p>or after solving for <span class="math notranslate nohighlight">\(x_1\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}\]</div>
+<p><strong>Problem</strong></p>
+<ol class="simple">
+<li><p>Graph the function <span class="math notranslate nohighlight">\(f(x) = x^3 -4x^2 -1\)</span>, note the one solution.</p></li>
+<li><p>Use Newton’s Method with <span class="math notranslate nohighlight">\(x_0=5\)</span> to find <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+<li><p>Use the computer to find the <span class="math notranslate nohighlight">\(x_8\)</span>.</p></li>
+<li><p>Repeat with <span class="math notranslate nohighlight">\(x_0 = 2\)</span>, what do you notice?</p></li>
+<li><p>Now try with <span class="math notranslate nohighlight">\(x_0 = 0\)</span>.  What’s happening?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define our function f</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1">#define a derivative function using h = 0.0001</span>
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.0001</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="mf">0.0001</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define x1 using the formula developed above</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our first approximation x1 = &quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our first approximation x1 =  4.314307264821802
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#repeat procedure above for our second approximation</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Second approximation is: &quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Second approximation is:  4.0868741600614715
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">approximations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">approximations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">approximations</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">approximations</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;approximation is &quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">)</span>
+    <span class="n">approximations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our  0 approximation is  4.314307264821802
+Our  1 approximation is  4.0868741600614715
+Our  2 approximation is  4.060973545033629
+Our  3 approximation is  4.060647094636585
+Our  4 approximation is  4.060647027557377
+Our  5 approximation is  4.060647027554143
+Our  6 approximation is  4.060647027554142
+Our  7 approximation is  4.060647027554142
+Our  8 approximation is  4.060647027554142
+Our  9 approximation is  4.060647027554142
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">approximations</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.060647027554142
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">approximations</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">approximations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Approximations closing in on $x_n = 4.06065$&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.0, 1.0, &#39;Approximations closing in on $x_n = 4.06065$&#39;)
+</pre></div>
+</div>
+<img alt="_images/newtons_method_12_1.png" src="_images/newtons_method_12_1.png" />
+</div>
+</div>
+<div class="alert alert-success" role="alert">
+  <strong>So What?!</strong> This should mean that our original function equals zero when $x = 4.06065$.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mf">4.06065</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0476324631176794e-05
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#repeating our process above starting with x0 = 2</span>
+<span class="n">approx2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">approx2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">approx2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">approx2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">approx2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span>
+    
+<span class="n">approx2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.0,
+ -0.2501125112459115,
+ 0.3284143953117059,
+ -0.277476731512067,
+ 0.2650410986508679,
+ -0.395916521479287,
+ 0.06848549779683089,
+ -1.8380174545550845,
+ -1.0037100235361796,
+ -0.457084983177515,
+ -0.00617702418119781]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">approx2</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Approximations Closing in on $x_n = 0$ </span><span class="se">\n</span><span class="s2">from $x_0 = 2$&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.0, 1.0, &#39;Approximations Closing in on $x_n = 0$ \nfrom $x_0 = 2$&#39;)
+</pre></div>
+</div>
+<img alt="_images/newtons_method_16_1.png" src="_images/newtons_method_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#repeating our process above starting with x0 = 2</span>
+<span class="n">approx3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">approx3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">approx3</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">approx3</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">approx3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span>
+    
+<span class="n">approx3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0,
+ -2500.0625084350586,
+ -1666.2643362734148,
+ -1110.3991233297015,
+ -739.8226689769101,
+ -492.7722304250899,
+ -328.07273331465905,
+ -218.27425810421983,
+ -145.0770516348452,
+ -96.28156299561368,
+ -63.75517373413263]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tan_line</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$x_0 = 5$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tan_line</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$x_0 = 2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tan_line</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$x_0 = 0$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Different Starting Values for Newton&#39;s Methods </span><span class="se">\n</span><span class="s2">lead down different paths!&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(1.0, 1.0, &quot;Different Starting Values for Newton&#39;s Methods \nlead down different paths!&quot;)
+</pre></div>
+</div>
+<img alt="_images/newtons_method_18_1.png" src="_images/newtons_method_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+
+<span class="c1">#define a function that takes in x0 and </span>
+<span class="c1">#n(the number of iterations) for newton&#39;s method</span>
+
+<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">apx</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n</span><span class="p">):</span>
+        <span class="nb">next</span> <span class="o">=</span> <span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">apx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">apx</span><span class="p">)</span>
+    
+
+<span class="c1">#creates sliders for approximations to change x0 and n</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">newton</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "0fbe73c00f154c1b9140f12176dbaf50"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.newton(x0, n)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#modify the function above to include a plot</span>
+<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">apx</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n</span><span class="p">):</span>
+        <span class="nb">next</span> <span class="o">=</span> <span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">apx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">apx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">apx</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">apx</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Approximations for zero </span><span class="se">\n</span><span class="s2">by Newton&#39;s method&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tan_line</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mf">2.6</span><span class="p">),</span><span class="n">f</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Plot of $f$ and the tangent at $x_0$&quot;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+   
+
+<span class="n">interact</span><span class="p">(</span><span class="n">newton</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7cb3a434babd406d974d5241c17c356f"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.newton(x0, n)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Problem</strong></p>
+<ol class="simple">
+<li><p>Recall the distance formula</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[D = \sqrt{(x_2 - x_1)^2  + (y_2 - y_1)^2}\]</div>
+<p>Write an equation that gives the distance from any point on the curve <span class="math notranslate nohighlight">\(y = 1/x\)</span> to the point <span class="math notranslate nohighlight">\((1,0)\)</span>.</p>
+<ol class="simple">
+<li><p>Minimize this distance using Newton’s method to find critical points.</p></li>
+</ol>
+<p><strong>Problem</strong></p>
+<p>Consider <span class="math notranslate nohighlight">\(f(x) = x^3 - x\)</span>.</p>
+<p>a. Argue that if <span class="math notranslate nohighlight">\(x_0 &gt; \frac{1}{\sqrt{3}}\)</span>, then Newton’s Method will converge to the solution 1.  Therefore, by symmetry, if <span class="math notranslate nohighlight">\(x_0 &lt; \frac{-1}{\sqrt{3}}\)</span>, Newton’s Method will converge to the solution <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<p>b. What happens when <span class="math notranslate nohighlight">\(x_0 = 1/\sqrt{3}\)</span>?</p>
+<p>c. Demonstrate Algebraically and with the computer that if we start with <span class="math notranslate nohighlight">\(x_0 = 1/\sqrt{5}\)</span>, we do not converge to a solution.</p>
+<p>d. Some interesting behavior occurs between <span class="math notranslate nohighlight">\(1/\sqrt{5} &lt; x_0 &lt; 1/\sqrt{3}\)</span>.  Fill in the following table and discuss the consequences of your observation.</p>
+<table style="width:100%">
+  <tr>
+    <th>$x_0$</th>
+    <th>Solution Found</th> 
+  </tr>
+  <tr>
+    <td>0.577</td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td>0.578</td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td>0.460</td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td>0.466</td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td>0.44722</td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td>0.44723</td>
+    <td></td> 
+  </tr>
+</table><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="mf">0.000001</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">dx</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">N</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">N</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5773502691896258,
+ 222221.7560939099,
+ 148149.07405719586,
+ 98766.46604358389,
+ 65844.091950192,
+ 43895.920678771174,
+ 29263.96470188459,
+ 19509.316399357514,
+ 13006.214032287608]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"ee7b1c222fc041789bc78fa881d715f0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0fbe73c00f154c1b9140f12176dbaf50": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_fa1d52d32430419a857c31e518140404", "IPY_MODEL_9db6c94fd7f14d48a9107c5871f66a06", "IPY_MODEL_525b064a227e445a97a01cddd5411c29"], "layout": "IPY_MODEL_ee7b1c222fc041789bc78fa881d715f0"}}, "cbb26e091afa4ffd831c6f1339bba9fa": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c27afb9885a648faac2c43bd901b9e06": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "fa1d52d32430419a857c31e518140404": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "x0", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_cbb26e091afa4ffd831c6f1339bba9fa", "max": 2.0, "min": -2.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_c27afb9885a648faac2c43bd901b9e06", "value": 0.0}}, "8a8eae823a4944e88e9a527dc69337bd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "faba6b3ae7ff40139f8e2b38f996e6cb": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "9db6c94fd7f14d48a9107c5871f66a06": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "n", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_8a8eae823a4944e88e9a527dc69337bd", "max": 10, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_faba6b3ae7ff40139f8e2b38f996e6cb", "value": 5}}, "4c4af40e6c6d4f79a77a095765ab54b7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "525b064a227e445a97a01cddd5411c29": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4c4af40e6c6d4f79a77a095765ab54b7", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "[0.0, -2500.0625084350586, -1666.2643362734148, -1110.3991233297015, -739.8226689769101, -492.7722304250899]\n"}]}}, "60942b07cd40472c9dce51ef05d605b2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7cb3a434babd406d974d5241c17c356f": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_783c1e5090cc4534996e3260442ef424", "IPY_MODEL_d6df25a2fc6b4b77a46ec5a39afc3fcf", "IPY_MODEL_e415918c838744478f2c17e0a17ddd78"], "layout": "IPY_MODEL_60942b07cd40472c9dce51ef05d605b2"}}, "9cc8a5611c2c4a09b0177c76ad563526": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "daa2f6d333634563bd7d9cda0cbb3f95": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "783c1e5090cc4534996e3260442ef424": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "x0", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_9cc8a5611c2c4a09b0177c76ad563526", "max": 6.0, "min": -2.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_daa2f6d333634563bd7d9cda0cbb3f95", "value": 2.0}}, "e10e38f7006f4155958c0f53767a78fb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e676dfa9fd2c42c2a5f63698f86d9d54": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "d6df25a2fc6b4b77a46ec5a39afc3fcf": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "n", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_e10e38f7006f4155958c0f53767a78fb", "max": 10, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_e676dfa9fd2c42c2a5f63698f86d9d54", "value": 5}}, "a6f3d043a08145e89408e0a628858f7f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e415918c838744478f2c17e0a17ddd78": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a6f3d043a08145e89408e0a628858f7f", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "[-0.2501125112459115, 0.3284143953117059, -0.277476731512067, 0.2650410986508679, -0.395916521479287]\n"}, {"output_type": "display_data", "metadata": {"needs_background": "light"}, "data": {"text/plain": "<Figure size 720x432 with 2 Axes>", "image/png": "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\n"}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="derv_review.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Review</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jacob F. Koehler, PhD<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
